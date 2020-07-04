@@ -22,21 +22,25 @@ class BST {
 
     insertNode(root, newNode) {
 
-        if (root === null)
-            return newNode;
-        else if (newNode.data < root.data) 
-            root.left = this.insertNode(root.left, newNode);
-        else
-            root.right = this.insertNode(root.right, newNode);
+        if (newNode.data < root.data) {
+            if (root.left === null)
+                root.left = newNode;
+            else 
+                this.insertNode(root.left, newNode);
+        } else {
+            if (root.right === null)
+                root.right = newNode;
+            else
+                this.insertNode(root.right, newNode);
+        }
     }
 
-    inorderTraversal(root = this.root) {
-        if (root === null)
-            return;
-
-        this.inorderTraversal(root.left);
-        console.log(root.data);
-        this.inorderTraversal(root.right);
+    inorderTraversal(node = this.root) {
+        if (node !== null) {
+            this.inorderTraversal(node.left);
+            console.log(node.data);
+            this.inorderTraversal(node.right);
+        }
     }
 }
 
