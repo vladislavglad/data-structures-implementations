@@ -7,7 +7,9 @@ class Stack {
     }
 
     pop() {
-        return this.list.removeFirst();
+        let data = this.list.removeFirst();
+        this.size--;
+        return data;
     }
 
     push(item) {
