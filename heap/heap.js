@@ -48,13 +48,20 @@ class MinHeap {
     }
 
     remove() {
-        this.swap(0, this.size-1);
-        let minVal = this.arr.pop();
-        this.size--;
+        
+        // Only remove if there are actual elements.
+        if (this.size > 0) {
+            this.swap(0, this.size-1);
+            let minVal = this.arr.pop();
+            this.size--;
+    
+            this.minHeapify(0);
+    
+            return minVal;
 
-        this.minHeapify(0);
-
-        return minVal;
+        } else 
+            throw new RangeError("There is no element to remove!");
+   
     }
 
     minHeapify(index) {
