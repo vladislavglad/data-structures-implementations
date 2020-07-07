@@ -4,6 +4,26 @@ class Node {
         this.left = null;
         this.right = null;
     }
+
+    // Could use this function to insert a child node.
+    addChild(val) {
+        
+        if (val < this.val) {
+
+            if (this.left === null)
+                this.left = new Node(val);
+            else
+                this.left.addChild(val);
+
+        } else {
+
+            if (this.right === null)
+                this.right = new Node(val);
+            else 
+                this.right.addChild(val);
+
+        }
+    }
 }
 
 class BST {
@@ -14,6 +34,8 @@ class BST {
     insert(data) {
         let newNode = new Node(data);
         
+        // Preconditioning: making sure that on the very first call,
+        // root gets initialized.
         if (this.root === null)
             this.root = newNode;
         else 
@@ -56,6 +78,14 @@ class BST {
         }
     }
 
+    // Inserting using Node's own function.
+    insert_v2(val) {
+        if (this.root === null)
+            this.root = new Node(val);
+        else    
+            this.root.addChild(val);
+    }
+
     // log(n) for balanced tree.
     // n for unbalanced.
     contains(value, root = this.root) {
@@ -80,3 +110,35 @@ class BST {
 }
 
 module.exports = BST;
+
+// Another (prefered) version of the same thing.
+class MyTree {
+    constructor() {
+        this.root = null;
+    }
+
+    insert(val) {
+        this.root = this.insertNode(val, this.root);
+    }
+
+    // No initial preconditioning of the root.
+    insertNode(val, root) {
+        if (root === null)
+            return new Node(val);
+        else if (root.value > val) 
+            root.left = this.insertNode(val, root.left);
+        else 
+            root.right = this.insertNode(val, root.right);
+
+        return root; // rebuild the references: bottom -> top.
+    }
+
+    traversal(root = this.root) {
+        if (root === null)
+            return;
+
+        this.traversal(root.left);
+        console.log(root.value);
+        this.traversal(root.right);
+    }
+}
