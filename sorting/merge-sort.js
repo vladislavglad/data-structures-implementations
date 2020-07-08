@@ -8,13 +8,15 @@ function mergeSort(arr, start, end) {
 }
 
 function merge(arr, start, mid, end) {
-    let leftArr = new Array(mid - start + 1); 
-    let rightArr = new Array(end - mid);
+    let leftArr = [];
+    let rightArr = [];
 
-    for (let i = 0; i < leftArr.length; i++) 
+    // Includes mid (upper bound)
+    for (let i = 0; i <= mid - start; i++) 
         leftArr[i] = arr[start + i];
-       
-    for (let i = 0; i < rightArr.length; i++) 
+    
+    // mid + 1 until end (includind end);
+    for (let i = 0; i < end - mid; i++) 
         rightArr[i] = arr[mid + i + 1];
         
 
