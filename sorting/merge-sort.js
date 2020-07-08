@@ -11,13 +11,20 @@ function merge(arr, start, mid, end) {
     let leftArr = [];
     let rightArr = [];
 
+    let index = start;
+
     // Includes mid (upper bound)
-    for (let i = 0; i <= mid - start; i++) 
-        leftArr[i] = arr[start + i];
-    
+    for (let i = 0; i <= mid - start; i++) {
+        leftArr[i] = arr[index];
+        index++;
+    }   
+
+    index = mid + 1;
     // mid + 1 until end (includind end);
-    for (let i = 0; i < end - mid; i++) 
-        rightArr[i] = arr[mid + i + 1];
+    for (let i = 0; i < end - mid; i++) {
+        rightArr[i] = arr[index];
+        index++;
+    }
         
 
     let leftIndex = 0;
