@@ -21,7 +21,7 @@ function merge(arr, start, mid, end) {
 
     index = mid + 1;
     // mid + 1 until end (includind end);
-    for (let i = 0; i < end - mid; i++) {
+    for (let i = 0; i <= end - mid - 1; i++) {
         rightArr[i] = arr[index];
         index++;
     }
