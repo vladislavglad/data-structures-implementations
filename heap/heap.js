@@ -67,7 +67,7 @@ class MinHeap {
     minHeapify(index) {
 
         let leftChildIndex = this.getLeftChild(index);
-        let RightChildIndex = this.getRightChild(index);
+        let rightChildIndex = this.getRightChild(index);
 
         let minIndex;
 
@@ -76,8 +76,8 @@ class MinHeap {
         else 
             minIndex = index;
 
-        if (RightChildIndex < this.size && this.arr[RightChildIndex] < this.arr[minIndex])
-            minIndex = RightChildIndex;
+        if (rightChildIndex < this.size && this.arr[rightChildIndex] < this.arr[minIndex])
+            minIndex = rightChildIndex;
 
         if (minIndex !== index) {
             this.swap(index, minIndex);
