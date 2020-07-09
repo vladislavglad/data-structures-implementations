@@ -6,4 +6,8 @@ graph.addEdge(1,2);
 graph.addEdge(2,0);
 graph.addEdge(3,2);
 
+// Vertex 7 must also be created, 
+// even if it does not point anywhere.
+graph.addEdge(1,7); 
+
 console.log('' + graph); // Implicitly calls .toString()
