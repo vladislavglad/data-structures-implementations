@@ -14,3 +14,9 @@ console.log('' + graph); // Implicitly calls .toString()
 
 console.log("DFS starting at Vertex 3:");
 Graph.DFS(graph.vertices[3]);
+
+// Reset all 'visits'
+Graph.resetAllVisits(graph);
+
+console.log("\nBFS starting at Vertex 3:");
+Graph.BFS(graph.vertices[3]);

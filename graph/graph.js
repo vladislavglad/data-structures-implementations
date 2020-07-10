@@ -1,3 +1,5 @@
+const Queue = require("../queue/queue"); // for BFS.
+
 class Vertex {
     constructor(value = undefined) {
         // It is not really needed: index in vertices arr is the name!
@@ -49,6 +51,64 @@ class Graph {
             
             if (source.adjList[i].visited === false)
                 this.DFS(source.adjList[i]);
+        }
+    }
+
+    /**
+     * Breadth First Search (BFS) - explores each neighbor before exploring their children Vertices.
+     * @param {Vertex} source - first Vertex to be examined/visited.
+     * @param {function} visit - callback to be executed on Vertex visit.
+     */
+    static BFS(source, visit = (vertex) => console.log(vertex.value) ) {
+
+        let q = new Queue();
+        q.add(source);
+        //console.log(q);
+
+        while(!q.isEmpty()) {
+            let vertex = q.remove();
+
+            //console.log(vertex);
+            //console.log(q);
+
+            visit(vertex);
+            //vertex.visited = true;
+
+            for (let i = 0; i < vertex.adjList.length; i++) {
+
+                if (vertex.adjList[i] === undefined)
+                    continue;
+
+                if (vertex.adjList[i].visited === false) {
+                    q.add(vertex.adjList[i]);
+                    //console.log(q);
+                }
+            }
+
+            vertex.visited = true;
+        }
+    }
+
+    /**
+     * As the name implies - resets all 'visited' parameters of graph's verticies to 'false'.
+     * @param {Graph} graph - collection of vertices that need to be reset 
+     * (before performing another search on that graph). 
+     */
+    static resetAllVisits(graph) {
+        for (let i = 0; i < graph.vertices.length; i++) {
+
+            if (graph.vertices[i] === undefined)
+                continue;
+
+            // Set curent Vertex to 'false' and all of it adjList.
+            graph.vertices[i].visited = false;
+            for (let j = 0; i < graph.vertices[i].adjList.lenth; i++) {
+                if (graph.vertices[i].adjList[j] === undefined)
+                    continue;
+                
+                graph.vertices[i].adjList[j].visited = false;
+            }
+
         }
     }
 
