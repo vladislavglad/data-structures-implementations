@@ -11,3 +11,6 @@ graph.addEdge(3,2);
 graph.addEdge(1,7); 
 
 console.log('' + graph); // Implicitly calls .toString()
+
+console.log("DFS starting at Vertex 3:");
+Graph.DFS(graph.vertices[3]);
