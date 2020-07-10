@@ -18,7 +18,7 @@ class HashTable {
 
     getIndex(key) {
         let index = this.hashCode(key) % this.table.length;
-        console.log(`key: ${key} has index: ${index}`);
+        // console.log(`key: ${key} has index: ${index}`);
         return index;
     }
 
@@ -35,6 +35,10 @@ class HashTable {
 
     retrieve(key) {
         return this.table[ this.getIndex(key) ];
+    }
+
+    remove(key) {
+        this.table[ this.getIndex(key) ].removeByValue(key);
     }
 }
 

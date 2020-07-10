@@ -52,11 +52,19 @@ class LinkedList {
 
     removeAtIndex(index) {
 
-        //check if index is at head (and tail).
+        //check if index is at head.
         if (index === 0)
             return this.removeFirst();
         
         let previous = this.aproachToIndex(index-1);
+
+        // if node to remove is tail.
+        if (previous.next === this.tail) {
+            let data = previous.next.data;
+            this.tail = previous;
+            previous.next = null;
+            return data;
+        }
    
         // Skip the Node at given index.
         previous.next = previous.next.next;
