@@ -15,11 +15,11 @@ class ArrayList {
     }
 
     resizeArr() {
-        console.log("resize is called!");
+        // console.log("resize is called!");
 
         let temp = new Array(this.arr.length * 2);
 
-        for (let i = 0; i < this.arr.length; i++) 
+        for (let i = 0; i < this.size; i++) 
             temp[i] = this.arr[i];
         
         // Store the address of the newly created array.
@@ -40,7 +40,7 @@ class ArrayList {
     }
 
     indexOf(val) {
-        for (let i = 0; i < this.arr.length; i++)
+        for (let i = 0; i < this.size; i++)
             if (this.arr[i] === val)
                 return i;
         return -1;
@@ -51,7 +51,7 @@ class ArrayList {
     }
 
     get(index) {
-        if (this.isOutOfBounds())
+        if (this.isOutOfBounds(index))
             throw new RangeError("given index is out of bounds!");
         
         return this.arr[index];
@@ -85,7 +85,7 @@ class ArrayList {
     }
 
     remove(index) {
-        if (this.isOutOfBounds())
+        if (this.isOutOfBounds(index))
             throw new RangeError("given index is out of bounds!");
 
         // Shift everything left by 1.
@@ -97,10 +97,21 @@ class ArrayList {
 
     removeByVal(val) {
         try {
-            this.remove( this.indexOf(val) );
+            this.remove( this.indexOf(val) ); // throws error if no value found.
         } catch (err) {
-            throw new Error("There is no such value: " + val);
+            throw Error("There is no such value: " + val);
         }
+    }
+
+    toString() {
+        let str = "[ ";
+        for (let i = 0; i < this.size; i++) {
+            str += this.arr[i];
+            if (i < this.size - 1)
+                str += ", "
+        }
+        str += " ]";
+        return str;
     }
 }
 
