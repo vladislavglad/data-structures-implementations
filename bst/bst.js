@@ -109,8 +109,6 @@ class BST {
     }
 }
 
-module.exports = BST;
-
 // Another (prefered) version of the same thing.
 class MyTree {
     constructor() {
@@ -124,8 +122,8 @@ class MyTree {
     // No initial preconditioning of the root.
     insertNode(val, root) {
         if (root === null)
-            return new Node(val);
-        else if (root.value > val) 
+            root = new Node(val);
+        else if (root.data > val) 
             root.left = this.insertNode(val, root.left);
         else 
             root.right = this.insertNode(val, root.right);
@@ -138,7 +136,9 @@ class MyTree {
             return;
 
         this.traversal(root.left);
-        console.log(root.value);
+        console.log(root.data);
         this.traversal(root.right);
     }
 }
+
+module.exports = BST; // export either one.
