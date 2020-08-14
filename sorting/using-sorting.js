@@ -2,7 +2,7 @@ const mergeSort = require('./merge-sort');
 const quickSortLomuto = require('./quick-sort-lomuto');
 const quickSortHoare = require('./quick-sort-hoare');
 
-let arr = [7, 2, 3, 4, 1, 5, 0];
+let arr = [55, 23, 67, 11, 49, 38, 87];
 let arr2 = [...arr]; // clone an array.
 let arr3 = [...arr];
 
