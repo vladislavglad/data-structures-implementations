@@ -1,7 +1,13 @@
 class MinHeap {
-    constructor() {
-        this.arr = [];
-        this.size = 0;
+    constructor(arr = null) {
+        if (arr === null) { // Start off with empty heap.
+            this.arr = [];
+            this.size = 0;
+        } else { // User provided an existing array -> minHeapify it.
+            this.arr = arr;
+            this.size = arr.length;
+            this.buildHeap();
+        }
     }
 
     getParent(index) {
@@ -20,6 +26,14 @@ class MinHeap {
         let temp = this.arr[i];
         this.arr[i] = this.arr[j];
         this.arr[j] = temp;
+    }
+
+    buildHeap() {
+        let start = this.size / 2 - 1;
+        // console.log("starting 'minHeapify()' index is: " + start);
+        for (let i = start; i >= 0; i--) {
+            this.minHeapify(i);
+        }
     }
 
     insert(val) {

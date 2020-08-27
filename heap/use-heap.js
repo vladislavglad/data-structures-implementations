@@ -8,10 +8,19 @@ h.insert(2);
 h.insert(1);
 h.insert(1);
 
-console.log(h.size);
-console.log(h.arr);
+// console.log(h.size);
+// console.log(h.arr);
+printHeap(h);
 
-while (h.size != 0) {
-    h.remove();
-    console.log(h.arr);
+let heap = new MinHeap( [5, 6, 3, 2, 1, 1] ); 
+// console.log(heap.size);
+// console.log(heap.arr);
+printHeap(heap);
+
+function printHeap(heap) {
+    console.log(heap.arr);
+    while (heap.size != 0) {
+        heap.remove();
+        console.log(heap.arr);
+    }
 }
